@@ -3,7 +3,16 @@ import DeleteButton from "./element/button/DeleteButton";
 import ArchiveButton from "./element/button/ArchiveButton";
 import { showFormattedDate } from "../utils";
 
-const NoteListItem = ({ id, title, createdAt, body, onDelete, onArchive }) => {
+const NoteListItem = ({
+  id,
+  title,
+  createdAt,
+  body,
+  archived,
+  onDelete,
+  onArchive,
+}) => {
+  const buttonLabel = archived ? "Pindahkan" : "Archive";
   return (
     <>
       <div className="note-item">
@@ -14,7 +23,9 @@ const NoteListItem = ({ id, title, createdAt, body, onDelete, onArchive }) => {
         </div>
         <div className="note-item__action">
           <DeleteButton id={id} onDelete={onDelete} text="Delete" />
-          <ArchiveButton id={id} onArchive={onArchive} text="Archive" />
+          <ArchiveButton id={id} onArchive={onArchive} archived={archived}>
+            {buttonLabel}
+          </ArchiveButton>
         </div>
       </div>
     </>

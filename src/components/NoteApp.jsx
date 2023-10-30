@@ -22,7 +22,6 @@ class NoteApp extends React.Component {
       searchTerm: "",
       filteredNote: [],
     };
-
     this.onChangeTitleHandler = this.onChangeTitleHandler.bind(this);
     this.onChangeBodyHandler = this.onChangeBodyHandler.bind(this);
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -33,16 +32,14 @@ class NoteApp extends React.Component {
 
   handleSearchInput(e) {
     const { notes } = this.state;
-    const searchTerm = e.target.value.toLowerCase();
-    const filteredNotes = notes.filter((note) => {
-      return note.title.toLocaleLowerCase().includes(searchTerm);
+    const searchInput = e.target.value.toLowerCase();
+    const filteredNotes = this.state.notes.filter((note) => {
+      return note.title.toLocaleLowerCase().includes(searchInput);
     });
-
     this.setState({
-      searchTerm: searchTerm,
+      searchTerm: searchInput,
       filteredNote: filteredNotes,
     });
-    console.log(this.state.filteredNote);
   }
 
   onChangeTitleHandler(e) {

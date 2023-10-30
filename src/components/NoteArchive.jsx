@@ -12,6 +12,7 @@ const NoteArchive = ({ archivedNotes, onDelete, onArchive }) => {
             key={note.id}
             date={note.createdAt}
             onDelete={onDelete}
+            archived={note.archived}
             onArchive={onArchive}
             {...note}
           />
